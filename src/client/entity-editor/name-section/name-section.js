@@ -16,7 +16,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-import { Alert, Col, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
+import {Alert, Col, ListGroup, ListGroupItem, Row} from 'react-bootstrap';
 import {
 	checkIfNameExists,
 	debouncedUpdateDisambiguationField,
@@ -25,7 +25,7 @@ import {
 	searchName,
 	updateLanguageField
 } from './actions';
-import { isAliasEmpty, isRequiredDisambiguationEmpty } from '../helpers';
+import {isAliasEmpty, isRequiredDisambiguationEmpty} from '../helpers';
 import {
 	validateNameSectionDisambiguation,
 	validateNameSectionLanguage,
@@ -40,11 +40,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import SearchResults from '../../components/pages/parts/search-results';
 import SortNameField from '../common/sort-name-field';
-import { UPDATE_WARN_IF_EDITION_GROUP_EXISTS } from '../edition-section/actions';
+import {UPDATE_WARN_IF_EDITION_GROUP_EXISTS} from '../edition-section/actions';
 import _ from 'lodash';
-import { connect } from 'react-redux';
-import { entityTypeProperty } from '../../helpers/react-validators';
-import { getEntityDisambiguation } from '../../helpers/entity';
+import {connect} from 'react-redux';
+import {entityTypeProperty} from '../../helpers/react-validators';
+import {getEntityDisambiguation} from '../../helpers/entity';
 
 
 /**
@@ -90,12 +90,12 @@ class NameSection extends React.Component {
 	*/
 	componentDidMount() {
 		if (this.props.action !== 'edit' && !_.isNil(this.nameInputRef)) {
-			this.handleNameChange({ target: { value: this.nameInputRef.value } });
+			this.handleNameChange({target: {value: this.nameInputRef.value}});
 		}
 	}
 
 	componentDidUpdate(prevProps) {
-		const { nameValue, searchForExistingEditionGroup } = this.props;
+		const {nameValue, searchForExistingEditionGroup} = this.props;
 		if (prevProps.searchForExistingEditionGroup === searchForExistingEditionGroup ||
 			searchForExistingEditionGroup === false) {
 			return;
@@ -181,19 +181,19 @@ class NameSection extends React.Component {
 									We found the following&nbsp;
 									{_.startCase(entityType)}{exactMatches.length > 1 ? 's' : ''} with
 									exactly the same name or alias:
-									<br /><small className="help-block">Click on a name to open it (Ctrl/Cmd + click to open in a new tab)</small>
+									<br/><small className="help-block">Click on a name to open it (Ctrl/Cmd + click to open in a new tab)</small>
 									<ListGroup className="margin-top-1 margin-bottom-1">
 										{exactMatches.map((match) =>
-										(
-											<ListGroupItem
-												bsStyle="warning"
-												href={`/${_.kebabCase(entityType)}/${match.bbid}`}
-												key={`${match.bbid}`}
-												rel="noopener noreferrer" target="_blank"
-											>
-												{match.defaultAlias.name} {getEntityDisambiguation(match)}
-											</ListGroupItem>
-										))}
+											(
+												<ListGroupItem
+													bsStyle="warning"
+													href={`/${_.kebabCase(entityType)}/${match.bbid}`}
+													key={`${match.bbid}`}
+													rel="noopener noreferrer" target="_blank"
+												>
+													{match.defaultAlias.name} {getEntityDisambiguation(match)}
+												</ListGroupItem>
+											))}
 									</ListGroup>
 									If you are sure your entry is different, please fill the
 									disambiguation field below to help us differentiate between them.
@@ -207,9 +207,9 @@ class NameSection extends React.Component {
 						<Row>
 							<Col md={6} mdOffset={3}>
 								If the {_.startCase(entityType)} you want to add appears in the results
-								below, click on it to inspect it before adding a possible duplicate.<br />
+								below, click on it to inspect it before adding a possible duplicate.<br/>
 								<small>Ctrl/Cmd + click to open in a new tab</small>
-								<SearchResults condensed results={searchResults} />
+								<SearchResults condensed results={searchResults}/>
 							</Col>
 						</Row>
 					}
@@ -311,7 +311,7 @@ function mapStateToProps(rootState) {
 	};
 }
 
-function mapDispatchToProps(dispatch, { entity, entityType }) {
+function mapDispatchToProps(dispatch, {entity, entityType}) {
 	const entityBBID = entity && entity.bbid;
 	return {
 		onDisambiguationChange: (event) =>
