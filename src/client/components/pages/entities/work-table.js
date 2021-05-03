@@ -116,7 +116,7 @@ function WorkTable({entity, showAddedAtColumn, works, showAdd, showCheckboxes, s
 						className="margin-top-d15"
 						href={`/work/create?${_kebabCase(entity.type)}=${entity.bbid}`}
 					>
-						<FontAwesomeIcon className="margin-right-0-5" icon={faPlus} />Add Work
+						<FontAwesomeIcon className="margin-right-0-5" icon={faPlus}/>Add Work
 					</Button>
 				}
 			</React.Fragment>

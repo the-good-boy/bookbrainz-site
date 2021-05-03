@@ -23,7 +23,6 @@ import * as error from '../../common/helpers/error';
 import * as utils from '../helpers/utils';
 import type {Request as $Request, Response as $Response, NextFunction} from 'express';
 import _ from 'lodash';
-import authorSection from '../../client/entity-editor/author-section/author-section';
 
 
 function makeLoader(modelName, propName, sortFunc?) {
