@@ -235,7 +235,7 @@ function _setEditionTitle(res) {
 	);
 }
 
-router.get('/:bbid', middleware.loadEntityRelationships, (req, res) => {
+router.get('/:bbid', middleware.loadEntityRelationships, middleware.loadWorkTableAuthors, (req, res) => {
 	_setEditionTitle(res);
 	entityRoutes.displayEntity(req, res);
 });
@@ -282,7 +282,7 @@ function editionToFormState(edition) {
 	const defaultAliasList = aliases.splice(defaultAliasIndex, 1);
 
 	const aliasEditor = {};
-	aliases.forEach((alias) => { aliasEditor[alias.id] = alias; });
+	aliases.forEach((alias) => {aliasEditor[alias.id] = alias;});
 
 	const buttonBar = {
 		aliasEditorVisible: false,
@@ -305,7 +305,7 @@ function editionToFormState(edition) {
 
 	const identifierEditor = {};
 	identifiers.forEach(
-		(identifier) => { identifierEditor[identifier.id] = identifier; }
+		(identifier) => {identifierEditor[identifier.id] = identifier;}
 	);
 
 	const physicalVisible = !(

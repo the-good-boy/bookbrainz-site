@@ -57,6 +57,7 @@ function WorkTableRow({showAddedAtColumn, work, showCheckboxes, selectedEntities
 				<a href={`/work/${work.bbid}`}>{name}</a>
 				{disambiguation}
 			</td>
+			<td>{work.author && <a href={`/author/${work.author.bbid}`}>{work.author.defaultAlias.name}</a>}</td>
 			<td>{languages}</td>
 			<td>{workType}</td>
 			{showAddedAtColumn ? <td>{addedAt}</td> : null}
@@ -86,6 +87,7 @@ function WorkTable({entity, showAddedAtColumn, works, showAdd, showCheckboxes, s
 					<thead>
 						<tr>
 							<th>Name</th>
+							<th>Author</th>
 							<th>Languages</th>
 							<th>Type</th>
 							{
@@ -114,7 +116,7 @@ function WorkTable({entity, showAddedAtColumn, works, showAdd, showCheckboxes, s
 						className="margin-top-d15"
 						href={`/work/create?${_kebabCase(entity.type)}=${entity.bbid}`}
 					>
-						<FontAwesomeIcon className="margin-right-0-5" icon={faPlus}/>Add Work
+						<FontAwesomeIcon className="margin-right-0-5" icon={faPlus} />Add Work
 					</Button>
 				}
 			</React.Fragment>
@@ -128,8 +130,8 @@ function WorkTable({entity, showAddedAtColumn, works, showAdd, showCheckboxes, s
 						bsStyle="success"
 						href={`/work/create?${_kebabCase(entity.type)}=${entity.bbid}`}
 					>
-						<FontAwesomeIcon icon={faPenNib} size="2x"/>
-						<br/>
+						<FontAwesomeIcon icon={faPenNib} size="2x" />
+						<br />
 						Add Work
 					</Button>
 				</span>
@@ -137,11 +139,11 @@ function WorkTable({entity, showAddedAtColumn, works, showAdd, showCheckboxes, s
 					<h4>There are no Works yet!</h4>
 					<p>
 						Help us complete BookBrainz
-						<br/>
+						<br />
 					</p>
-					<br/><small>Not sure what to do? Visit the <a href="/help">help page</a> to get started.</small>
+					<br /><small>Not sure what to do? Visit the <a href="/help">help page</a> to get started.</small>
 				</span>
-				<hr className="margin-bottom-d0"/>
+				<hr className="margin-bottom-d0" />
 			</React.Fragment>
 		);
 	}
